@@ -1,0 +1,21 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Registration Error</title>
+{% endblock %}
+
+{% block content %}
+    {% if user_error %}
+    <p class="email-send-message">
+        We can't find the user you're going to verify. Please try again.
+    </p>
+    {% endif %}
+
+    {% if token_error %}
+    <p class="email-send-message">
+        The token is invalid.
+    </p>
+    {% endif %}
+{% endblock %}

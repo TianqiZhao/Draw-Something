@@ -1,0 +1,96 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Draw Something Home</title>
+{% endblock %}
+
+{% block nav_button_right %}
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="{% url 'edit-profile' %}"><span class="glyphicon glyphicon-user"></span> My profile <span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'ranks' %}"><span class="glyphicon glyphicon-fire"></span> Rank <span class="sr-only">(current)</span></a></li>
+		<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log out <span class="sr-only">(current)</span></a></li>
+	</ul>
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" id="room_full" value={{room_full_message}}>
+    <div class="col-md-8 column">
+
+        <div class="input-group input-group-lg" id="search_bar">
+            <div class="input-group-btn search-panel">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">Search by</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu search-option" role="menu">
+                    <li><a>Player</a></li>
+                    <li><a>Level</a></li>
+                    <li><a>Room name</a></li>
+                </ul>
+            </div>
+            <input type="hidden" class="form-control" value="" id="search_param" >
+            <input type="text" class="form-control" id="search_content" placeholder="Search term..." onkeypress="if(event.keyCode==13) {search();}">
+
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="button" id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+
+        </div>
+        <br>
+
+        <div id="room_list"></div>
+    </div>
+
+    <div class="col-md-4 column">
+        <div class="jumbotron">
+			<p class="welcome">
+				Draw Something Today!
+			</p>
+			{% if not user.player.profile_image %}
+			<div><img src="{% static 'draw_something/images/default.jpg' %}" class="img-circle img-thumbnail" width="60" style="float:left"></div>
+			{% endif %}
+
+			{% if user.player.profile_image %}
+			<div><img src="{% url 'profile-image' user.username %}" class="img-circle img-thumbnail" width="60" style="float:left"></div>
+			{% endif %}
+
+            <p class="name">
+                {{ user.player.first_name}} {{ user.player.last_name}}
+            </p>
+			<p>
+				@{{ user.username}}
+			</p>
+            <p>
+                Points : {{user.player.points}}
+            </p>
+            <p>
+                Rank : {{yourself.rank}}
+            </p>
+
+		</div>
+        <div>
+            <form class="btn-post" id="create_room_form" method="post">
+                <input id="room_name_field" name="room_name" placeholder="Pick a room name~">
+                <div class="btn-group create-level-panel" style="float: right">
+	                <button type="button" class="btn btn-info dropdown-toggle level-btn" data-toggle="dropdown">
+                        <span id="level-concept">Easy</span> <span class="caret"></span>
+	                </button>
+	                <ul class="dropdown-menu level-option" role="menu">
+	                	<li><a>Easy</a></li>
+	                	<li><a>Medium</a></li>
+	                	<li><a>Hard</a></li>
+	                </ul>
+                </div>
+                <button class="btn btn-success create-room-btn center-block" type="submit" >Create Room</button>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block js %}
+    <script src="{% static 'draw_something/js/jquery.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'draw_something/js/home.js' %}"></script>
+    <script type="text/javascript" src="{% static 'draw_something/js/bootstrap-notify.js' %}"></script>
+{% endblock %}

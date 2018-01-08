@@ -1,0 +1,60 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Registration</title>
+{% endblock %}
+
+{% block cssLink %}
+    <link href="{% static 'draw_something/form.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block nav_button_right %}
+    <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="{% url 'login' %}">Have an account?  <span class="glyphicon glyphicon-log-in"></span> Log in <span class="sr-only">(current)</span></a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <form class="form-signup" action="{% url 'register' %}" method="post">
+        <p class="form-signup-heading">Draw Something today!</p>
+
+        <label  class="sr-only">Username</label>
+        <input type="text"  name="username" class="form-control" placeholder="Username" required autofocus>
+
+        <label for="first-name" class="sr-only">First name</label>
+        <input type="text" id="first-name" name="first_name" class="form-control" placeholder="First name" required>
+
+        <label for="last-name" class="sr-only">Last name</label>
+        <input type="text" id="last-name" name="last_name" class="form-control" placeholder="Last name" required>
+
+        <label for="email" class="sr-only">Last name</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required>
+
+        <label for="password" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+
+        <label for="confirm" class="sr-only">Password</label>
+        <input type="password" id="confirm" name="confirm" class="form-control" placeholder="Confirm password" required>
+
+        {% for error in register_form.non_field_errors %}
+        <p class="error-message">
+            {{ error }}
+        </p>
+        {% endfor %}
+
+        {% for error in register_form.username.errors %}
+        <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        {% for error in register_form.first_name.errors %}
+        <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        {% for error in register_form.last_name.errors %}
+        <p class="error-message">{{ error }}</p>
+        {% endfor %}
+
+        <button class="btn btn-lg btn-info btn-block sign-up-btn" type="submit">Sign up</button>
+        {% csrf_token %}
+    </form>
+{% endblock%}

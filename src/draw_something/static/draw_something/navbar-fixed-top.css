@@ -1,0 +1,119 @@
+body {
+    min-height: 100%;
+    padding-top: 150px;
+    background: #ccc url(images/bg4.jpg) no-repeat;
+    background-attachment: fixed;
+}
+p.button-signup-heading {
+    font-family:Arial,Verdana,Sans-serif;
+    font-size:18px;
+    color:#606060
+}
+p.form-signin-heading {
+    font-family:Arial,Verdana,Sans-serif;
+    font-size:20px;
+    color:#606060
+}
+a:link {
+    text-decoration:none;
+}
+a:visited {
+    text-decoration:none;
+}
+a:hover {
+    text-decoration:none;
+}
+a:active {
+    text-decoration:none;
+}
+.room-item {
+    background: #80cbc4;
+    height: 150px;
+}
+.draw-guess-btn {
+    float: right;
+}
+.room-label {
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #707070;
+    font-size: 30px;
+}
+p.welcome {
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #585858;
+    font-size: 25px;
+    font-weight: bold;
+}
+#room_name_field {
+    width: 65%;
+    height: 60px;
+    margin-bottom:5px;
+    font-size: 20px;
+    padding-left:10px;
+    border-radius: 20px;
+}
+.create-room-btn {
+    height: 60px;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 100%;
+    margin-top:10px;
+}
+.search-page-home-btn {
+    height: 60px;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+#search-form {
+    height: 100%;
+}
+.level-btn {
+    height: 60px;
+    font-size: 20px;
+    border-radius: 20px;
+    width: 100%;
+}
+.create-level-panel {
+    width: 30%;
+}
+.row{
+    margin-top:40px;
+    padding: 0 10px;
+}
+.clickable{
+    cursor: pointer;
+}
+
+.panel-body{
+	display: none;
+}
+.rank-table-head tr{
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #585858;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #4db6ac;
+    text-align: center;
+}
+.rank-table-body tr {
+    height: 50px;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #585858;
+    font-size: 17px;
+    font-weight: bold;
+}
+.rank-table-body td {
+    margin-left: 50px;
+}
+.rank-table {
+    border-radius: 40px;
+}
+.rank-panel {
+    width: 70%;
+    margin-left: 15%;
+}
+#search_error {
+    font-size: 17px;
+}
+

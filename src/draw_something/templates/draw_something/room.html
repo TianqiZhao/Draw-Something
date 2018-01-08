@@ -1,0 +1,19 @@
+{% load static %}
+<div class='well well-lg room-item'>
+    <p class='room-label'>Room: {{ room.room_name }}
+    {% if room.level %}
+        {% if room.level == 'e' %}
+        <span class='label label-info' style='margin-left:30px;'>Easy</span>
+        {% endif %}
+        {% if room.level == 'm' %}
+        <span class='label label-warning' style='margin-left:30px;'>Medium</span>
+        {% endif %}
+        {% if room.level == 'h' %}
+        <span class='label label-danger' style='margin-left:30px;'>Hard</span>
+        {% endif %}
+    {% endif %}
+    </p>
+    <div class='draw-guess-btn'>
+        <a role='button' class='btn btn-lg btn-warning join-btn' name='{{room.id}}'>Join Room</a>
+    </div>
+</div>

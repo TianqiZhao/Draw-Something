@@ -1,0 +1,9 @@
+{
+  "rooms":[
+    {% for room in rooms %}{%spaceless%}{% include 'draw_something/room.json' %}{%endspaceless%}{% if not forloop.last %}, {% endif %}{% endfor %}
+  ],
+  "messages":[
+    {% for message in messages %}"{{message}}"{% if not forloop.last %},{% endif %}{% endfor %}
+  ],
+  "max-time":"{{max_time|date:"c"}}"
+}

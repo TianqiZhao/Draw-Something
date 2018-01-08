@@ -1,0 +1,102 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Your Profile</title>
+{% endblock %}
+
+{% block nav_button_right %}
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href=""><span class="glyphicon glyphicon-user"></span> My profile <span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'ranks' %}"><span class="glyphicon glyphicon-fire"></span> Rank <span class="sr-only">(current)</span></a></li>
+		<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log out <span class="sr-only">(current)</span></a></li>
+	</ul>
+{% endblock %}
+
+{% block cssLink %}
+    <link href="{% static 'draw_something/form.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} success-message">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form class="form-signup" enctype="multipart/form-data" action="{% url 'edit-profile' %}" method="post">
+        <p class="form-signup-heading">Edit your profile here</p>
+
+        <label for="first-name" >First name</label>
+        <input type="text" id="first-name" name="first_name" value="{{player_form.first_name.value}}" class="form-control" placeholder="First name" required>
+
+        <label for="last-name">Last name</label>
+        <input type="text" id="last-name" name="last_name" value="{{player_form.last_name.value}}" class="form-control" placeholder="Last name" required>
+
+        <label for="inputfile">Upload your image</label>
+		<input type="file" id="inputfile" name="profile_image" value="{{player_form.profile_image.value}}" class="form-control" placeholder="Upload your image">
+
+        <!--<label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+
+        <label for="confirm">Password</label>
+        <input type="password" id="confirm" name="confirm" class="form-control" placeholder="Confirm password">-->
+
+        {% for error in player_form.non_field_errors %}
+        <p class="error-message">
+            {{ error }}
+        </p>
+        {% endfor %}
+
+        {% for error in player_form.first_name.errors %}
+        <p class="error-message">{{ error }}</p>
+        {% endfor %}
+        {% for error in player_form.last_name.errors %}
+        <p class="error-message">{{ error }}</p>
+        {% endfor %}
+
+        <button class="btn btn-lg btn-info btn-block sign-up-btn" type="submit">Save</button>
+        <hr class="line">
+        {% csrf_token %}
+    </form>
+
+    <form class="form-signup" action="{% url 'change-password' %}" method="post">
+
+        <p class="button-signup-heading">Change password</p>
+
+        <label for="id_old_password" class="sr-only">Old password</label>
+        <input type="password" id="id_old_password" name="old_password" class="form-control" placeholder="Old password" required>
+
+        <label for="id_new_password1" class="sr-only">New password</label>
+        <input type="password" id="id_new_password1" name="new_password1" class="form-control" placeholder="New password" required>
+
+        <label for="id_new_password2" class="sr-only">New password confirmation</label>
+        <input type="password" id="id_new_password2" name="new_password2" class="form-control" placeholder="New password confirmation" required>
+
+        {% for error in password_change_form.non_field_errors %}
+        <p class="error-message">
+            {{ error }}
+        </p>
+        {% endfor %}
+
+        {% for field in password_change_form.visible_fields %}
+            {% for error in field.errors %}
+            <p class="error-message">
+                {{ error }}
+            </p>
+            {% endfor %}
+        {% endfor %}
+
+        <button class="btn btn-lg btn-info btn-block sign-up-btn" type="submit">Change Password</button>
+        {% csrf_token %}
+    </form>
+
+    <hr class="line">
+    <form action="{% url 'home' %} " class="form-signup" method="get">
+        <button class="btn btn-lg btn-warning btn-block sign-up-btn">Save and return to Home</button>
+    </form>
+{% endblock%}

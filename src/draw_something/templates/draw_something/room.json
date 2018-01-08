@@ -1,0 +1,7 @@
+{
+  "room_name" : "{{room.room_name}}",
+  "create_time" : "{{room.create_time}}",
+  "id" : "{{room.id}}",
+  "level" : "{{room.level}}",
+  "html":"{{room.html|safe}}"
+}

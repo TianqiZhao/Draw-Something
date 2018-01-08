@@ -1,0 +1,55 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Draw Something Rank</title>
+{% endblock %}
+
+{% block nav_button_right %}
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="{% url 'edit-profile' %}"><span class="glyphicon glyphicon-user"></span> My profile <span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'ranks' %}"><span class="glyphicon glyphicon-fire"></span> Rank <span class="sr-only">(current)</span></a></li>
+		<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Log out <span class="sr-only">(current)</span></a></li>
+	</ul>
+{% endblock %}
+
+{% block content %}
+    <div class="panel panel-success rank-panel">
+		<table class="table table-hover table-striped rank-table">
+			<thead class="rank-table-head">
+				<tr>
+					<th>Rank</th>
+					<th>Username</th>
+                    <th>Points</th>
+				</tr>
+			</thead>
+			<tbody class="rank-table-body">
+				{% for player in players %}
+                    {% if player.rank == 1 %}
+                    <tr style="background-color:#ffc107;">
+                        <td>{{player.rank}}</td>
+                        <td>{{player.user.username}}</td>
+                        <td>{{player.points}}</td></tr>
+                    {% elif player.rank == 2 %}
+                    <tr style="background-color:#e0e0e0;">
+                        <td>{{player.rank}}</td>
+                        <td>{{player.user.username}}</td>
+                        <td>{{player.points}}</td></tr>
+                    {% elif player.rank == 3 %}
+                    <tr style="background-color:#a1887f;">
+                        <td>{{player.rank}}</td>
+                        <td>{{player.user.username}}</td>
+                        <td>{{player.points}}</td></tr>
+                    {% else %}
+                    <tr>
+                        <td>{{player.rank}}</td>
+                        <td>{{player.user.username}}</td>
+                        <td>{{player.points}}</td></tr>
+                    {% endif %}
+
+                {% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

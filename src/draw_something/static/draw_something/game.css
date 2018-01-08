@@ -1,0 +1,156 @@
+.mycanvas {
+    border:10px;
+    solid #000000;
+    background: #ffffff;
+    border-radius: 25px;
+
+}
+#mycanvas {
+    border:10px;
+    solid #000000;
+    background: #ffffff;
+    border-radius: 25px;
+
+}
+.partner {
+    margin-left:80px;
+    width:250px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.timer{
+    color:#616161;
+    background: #80cbc4;
+    border-radius: 15px;
+    margin-top:60px;
+    margin-left:80px;
+    width:250px;
+    height:70px;
+    text-align:center;
+}
+.keyword {
+    color:#616161;
+    background: #9ccc65;
+    border-radius: 15px;
+    margin-top:50px;
+    margin-left:80px;
+    width:250px;
+    height:auto;
+    text-align:center;
+}
+.keypadding {
+    padding: 19px;
+}
+.guess{
+    margin-top:50px;
+    border-radius: 15px;
+    margin-left:80px;
+}
+
+.guess-label{
+    font-size:25px;
+    margin-top:30px;
+    border-radius: 15px;
+    margin-left:80px;
+    color:#424242;
+    font-weight: bold;
+}
+.guess-result {
+    color:#616161;
+    background: #ffd54f;
+    border-radius: 15px;
+    margin-top:20px;
+    margin-left:80px;
+    width:250px;
+    min-height:70px;
+    height: auto;
+    text-align:center;
+}
+
+.guess_text{
+    border-radius: 15px;
+    margin-left:80px;
+    height:70px;
+    width:250px;
+    font-size: 25px;
+    padding-left:30px;
+}
+
+.guess_btn{
+    margin-top:15px;
+    border-radius: 15px;
+    margin-left:80px;
+    width:250px;
+    height: 70px;
+    font-size: 28px;
+}
+.clear-btn {
+    float:right;
+    margin-right:30px;
+    margin-top:20px;
+}
+.overlay {
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index:998;
+    width:100%;
+    height:100%;
+    _padding:0 20px 0 0;
+    background:#f6f4f5;
+    display:none;
+}
+.showbox {
+    position:fixed;
+    top:0;
+    left:30%;
+    z-index:9999;
+    opacity:0;
+    filter:alpha(opacity=0);
+    width: 500px;
+    /*margin-left:-80px;*/
+}
+*html .showbox, *html .overlay {
+    position:absolute;
+    top:expression(eval(document.documentElement.scrollTop));
+}
+.loadingWord {
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #a0a0a0;
+    font-size: 25px;
+    text-align:center;
+}
+#drawing-mode-options {
+    /*display: inline-block;*/
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #505050;
+    font-size: 20px;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background: rgba(153, 204, 255, .5);
+    padding: 10px;
+    width: 500px;
+    border-radius: 20px;
+}
+.draw-option {
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color: #505050;
+    font-size: 20px;
+    margin-left: 20px;
+}
+#drawing-line-width {
+    display: inline-block;
+    float: right;
+    width: 60%;
+    height: 50px;
+}
+.role {
+    font-size: 30px;
+    margin-left: 40px;
+}

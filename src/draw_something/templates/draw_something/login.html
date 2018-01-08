@@ -1,0 +1,48 @@
+{% extends 'draw_something/base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Draw Something Login</title>
+{% endblock %}
+
+{% block cssLink %}
+    <link href="{% static 'draw_something/form.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <form class="form-signin" action="{% url 'login' %}" method="post">
+
+
+        <p class="form-signup-heading">Have an account?</p>
+
+        <label class="sr-only">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+
+
+        <label class="sr-only">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+        <div class="forget-link">
+            <a href="{% url 'password_reset' %}" >Forget password?</a>
+        </div>
+
+        {% if form.errors %}
+        <p class="error-message">
+            Incorrect username and password.
+        </p>
+        {% endif %}
+
+        <button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
+        <hr class="line">
+        <p class="button-signup-heading">New to Draw Something?</p>
+        <!--<button class="btn btn-lg btn-default btn-block" type="submit">Sign up</button>-->
+        {% csrf_token %}
+    </form>
+
+    <form class="btn-signup" action="{% url 'register' %}" method="get">
+        <button class="btn btn-lg btn-default btn-block" type="submit">Sign up</button>
+
+    </form>
+{% endblock %}
